@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<!-- WEBSITE -->
+
+<title> Auron's website </title>
+<style>
+    audio { 
+   display:none;
+}
+    hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 1em 0;
+    padding: 0;
+} 
+.test {
+    width: 11em; 
+    border: 1px solid blue;
+    word-wrap: break-word;
+    position: absolute;
+    right: 0px;
+}    
+</style>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+<body style="background-color:forestgreen">
+
+    
+<audio controls>
+            <source src="kde.mp3" type="audio/mpeg">
+         Your browser does not support this audio file.
+        </audio>
+
+    <span style="float:right;"> 
+        <head>
+<!-- INSERT JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+            
+
+<!-- JQUERY CODE -->
+<script>
+$(document).ready(function(){
+    $("#test").click(function(){
+        $("#test").fadeOut(1000);
+    });
+});
+</script>
+                        
+            
+</head>
+        <body onload="startTime()">
+
+<div id="txt"></div>
+        </span>
+        <center>  
+<p style="color:red;font-size:20px">
+<b>  Welcome to my website!  </b> </p> </center>
+<p style="font-size:18px">
+    
+<center><p style="color:darkblue">Hello, This my website. If you look at the code it's all wacky! Probably because i'm to lasy to organize it. Or just because i'm happy it works. Anyway, at-least the code runs correctly! Just so you know this was run on chrome. So if the website has random code on screen then that means it doesn't support your browser. Well, Bye! </p></center>
+    <!-- BORDER -->
+    <hr color:black> <!-- BORDER -->
+         <!-- COLOR FOR TEXT DO NOT CHANGE -->
+    <span style="color:darkred">
+    <P align=right class="update" id="hide"> Update List: </P> 
+
+        <!-- UPDATE LIST -->
+<span> <ul class="update test" id="hide">
+    <li> 1.0 Website released! </li>
+    <li> 1.1 Added Dark Mode! </li>
+    <li> 1.2 Click copyright to hide. </li>
+    </ul> </span>
+    
+        
+<!-- ACTUAL TEXT! -->
+  <p align="center">
+    If you find a bug or have a suggestion, click here: </p> 
+    <p align=middle> <a href=captcha.html>Email Link</a>
+        </p> 
+              
+ <!-- MAIN TEXT --> 
+
+<i> I use KDE Neon
+    <a href="https://neon.kde.org/">for my OS. </a> </i> <p> Click the link if you want to try it out! </p>
+    
+ <p>
+     My PC is a <a href="https://www3.lenovo.com/in/en/laptops/ideapad/ideapad-100-series/Ideapad-110-15%2C-Intel/p/88IP1000743">Lenovo Ideapad 110</a>!   SPECS:
+</p>
+     <ul>
+         <li>CPU: 1.6 GHZ dual core</li>
+         <li>RAM: 4 GB</li>
+         <li>HDD: 512 GB</li>
+         <li>OS: Linux mint 18.2 KDE</li>
+         <li>SCREEN: 1366 X 768</li>
+</ul>
+<p> Donate to KDE Neon or ReactOS! </p>
+<ul> 
+    <li> <a href="https://www.reactos.org/donating">ReactOS </a> </li>
+
+    <li>  <a href="https://www.kde.org/community/donations/">KDE Neon </a> </li> </ul>
+         
+<p> Wanna try the OS before installing it? Try <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox! </a> </p>
+<p> My Youtube and Twitch channels!
+    <ul>
+         <li><a href="https://www.youtube.com/channel/UCMF9lXrFi9k4A1EHRKc3-fw">Youtube </a> </li>
+        <li><a href="https://www.twitch.tv/ghostslayer989">Twitch </a>  
+ </li>
+        </ul>
+        
+       
+        <!-- DARK MODE -->
+        <img id="myImage" onclick="changeImage()" src="https://www.w3schools.com/js/pic_bulbon.gif" style="position: fixed; right: 20px; bottom: 0; height="180"">
+ 
+                <p1 style="position: fixed; bottom: 0; width:100%;"> Click the light to turn Dark Mode on.
+</p1>
+
+<script>
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("bulbon")) {  document.body.style.backgroundColor = "#000000"; document.getElementsByTagName("P1")[0].innerHTML = "Click the light to turn Dark Mode off.";
+  image.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+    } else 
+    { document.body.style.backgroundColor = "#228b22"; document.getElementsByTagName("P1")[0].innerHTML = "Click the light to turn Dark Mode on.";
+     image.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+    }
+}
+</script>
+         <!-- COPYRIGHT --> 
+  <p style="font-size:12px; position: fixed; bottom: 0; width:100%; text-align: center" id="test"> Auron's website © </p>  
+ 
+        
+        
+        <!-- END OF CODE -->
+        </body> </html>
