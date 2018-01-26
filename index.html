@@ -49,6 +49,7 @@ function startTime() {
   h = h ? h : 12; // the hour '0' should be '12'
     m = checkTime(m);
     s = checkTime(s);
+    document.getElementById("txt").style.color = "#8b0000";
     document.getElementById('txt').innerHTML =
     h + ":" + m + ":" + s + " " + ampm;
     var t = setTimeout(startTime, 500);
