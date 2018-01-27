@@ -11,7 +11,7 @@
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid black;
+    border-top: 1px solid darkred;
     margin: 1em 0;
     padding: 0;
 } 
@@ -26,7 +26,7 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-<body style="background-color:forestgreen">
+<body style="background-color:black">
 
     
 <audio controls preload="auto" autoplay id="kde.mp3">
@@ -49,7 +49,7 @@ function startTime() {
   h = h ? h : 12; // the hour '0' should be '12'
     m = checkTime(m);
     s = checkTime(s);
-    document.getElementById("txt").style.color = "#8b0000";
+    document.getElementById("txt").style.color = "darkred";
     document.getElementById('txt').innerHTML =
     h + ":" + m + ":" + s + " " + ampm;
     var t = setTimeout(startTime, 500);
@@ -83,7 +83,7 @@ $(document).ready(function(){
     
 <center><p style="color:darkblue">Hello, This my website. If you look at the code it's all wacky! Probably because i'm to lasy to organize it. Or just because i'm happy it works. Anyway, at-least the code runs correctly! Just so you know this was run on chrome. So if the website has random code on screen then that means it doesn't support your browser. Well, Bye! </p></center>
     <!-- BORDER -->
-    <hr color:black> <!-- BORDER -->
+    <hr color:darkred> <!-- BORDER -->
          <!-- COLOR FOR TEXT DO NOT CHANGE -->
     <span style="color:darkred">
     <P align=right style="margin-right: 140px;" class="update" id="hide"> Update List: </P> 
@@ -91,10 +91,9 @@ $(document).ready(function(){
         <!-- UPDATE LIST -->
 <span> <ul style="margin-right: 10px;" class="update test" id="hide">
     <li> 1.0 Website released! </li>
-    <li> 1.1 Added Dark Mode! </li>
-    <li> 1.2 Click copyright to hide. </li>
-    <li> 1.3 Welcome sound added. </li>
-    <li> 1.4 24 hour clock is now
+    <li> 1.1 Click copyright to hide. </li>
+    <li> 1.2 Welcome sound added. </li>
+    <li> 1.3 24 hour clock is now
          a 12 hour clock. </li>
     </ul> </span>
     
@@ -134,24 +133,6 @@ $(document).ready(function(){
  </li>
         </ul>
         
-       
-        <!-- DARK MODE -->
-        <img id="myImage" onclick="changeImage()" src="https://www.w3schools.com/js/pic_bulbon.gif" style="position: fixed; right: 20px; bottom: 0; height="180"">
- 
-                <p1 style="position: fixed; bottom: 0; width:100%;"> Click the light to turn Dark Mode on.
-</p1>
-
-<script>
-function changeImage() {
-    var image = document.getElementById('myImage');
-    if (image.src.match("bulbon")) {  document.body.style.backgroundColor = "#000000"; document.getElementsByTagName("P1")[0].innerHTML = "Click the light to turn Dark Mode off.";
-  image.src = "https://www.w3schools.com/js/pic_bulboff.gif";
-    } else 
-    { document.body.style.backgroundColor = "#228b22"; document.getElementsByTagName("P1")[0].innerHTML = "Click the light to turn Dark Mode on.";
-     image.src = "https://www.w3schools.com/js/pic_bulbon.gif";
-    }
-}
-</script>
          <!-- COPYRIGHT --> 
   <p style="font-size:12px; position: fixed; bottom: 0; width:100%; text-align: center" id="test"> Auron's website © </p>  
  
