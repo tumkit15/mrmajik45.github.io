@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <!-- CAPTCHA TXT -->
+<audio controls volume="0.6" preload="auto" autoplay id="audio2" loop>
+            <source src="dojo.mp3" type="audio/mpeg">
+         Your browser does not support this audio file.
+        </audio>
 
 <title> Auron's CAPTCHA </title>
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 <body style="background-color:lightblue">
 </body>
+
 
   <span style="float:right;"> 
         <head>
@@ -28,6 +33,15 @@ function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
 }
+
+var myAudio = document.getElementById("audio2");
+
+function playPause() { 
+    if (myAudio.paused) 
+        myAudio.play(); 
+    else 
+        myAudio.pause(); 
+} 
 </script>
 </head>
 
@@ -40,6 +54,10 @@ function checkTime(i) {
     <b>  Complete the Captcha to continue.  </b> </p> </center>
       <div align=center>
 <style>
+    audio { 
+   display:none;
+}
+
 .right {
     position: absolute;
     right: 0px;
@@ -161,6 +179,8 @@ function removeSpaces(string){
 return string.split(' ').join('');
 }
 </script>
-
+</div>
     <!-- Copyright -->
-    <p style="font-size:12px;  position: fixed; bottom: 0; width:100%; text-align: center"> Auron's Captcha © </p>
+    <p style="font-size:12px;  position: fixed; bottom: 0; width:100%; text-align: center; align="center" "> Auron's Captcha © </p>
+</body>
+        <button style="position: fixed; bottom: 0; left: 0; right: auto; top: auto" onclick="playPause()">Play/Pause</button> 
