@@ -3,28 +3,51 @@
 <title> Auron's website </title> 
   
 <style>
-#p12 {
-   overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: 2px;
-    animation: typing 1.3s steps(10, end), blink-caret .75s steps(50, end) infinite;
+#container {
+  display: flex;
 }
+
+#center {
+  margin: auto;
+}
+/* Remaining CSS is identical to original */
 #p12 {
-    display: inline-flex;
-  }
-  
+  display: flex;
+  overflow: hidden;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 2px;
+  animation: typing 1.3s steps(10, end), blink-caret .75s steps(50, end) infinite;
+}
+
+#p12 {
+  display: inline-flex;
+}
+
+
 /* The typing effect */
+
 @keyframes typing {
-  from { width: 0 }
-  to { width: 50% }
+  from {
+    width: 0
+  }
+  to {
+    width: 100%
+  }
 }
-  
+
+
 /* The typewriter cursor effect */
+
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
+  from,
+  to {
+    border-color: transparent
+  }
+  50% {
+    border-color: orange;
+  }
 }
   
     audio { 
@@ -115,10 +138,13 @@ $(document).ready(function(){
 
 <div id="txt"></div>
         </span>
-        <center>  
-<p id="p12" style="color:red;font-size:20px">
-<b>  Welcome to my website!  </b> </p> </center>
-<p style="font-size:18px">
+ <div id="container">
+  <div id="center">
+    <p id="p12" style="color:red;font-size:20px">
+      <b>Welcome to my website!</b> 
+    </p>
+  </div>
+</div>
     
 <center><p style="color:blue">Hello, This my website. If you look at the code it's all wacky! Probably because i'm to lasy to organize it. Or just because i'm happy it works. Anyway, at-least the code runs correctly! Just so you know this was run on chrome. So if the website has random code on screen then that means it doesn't support your browser. Well, Bye! </p></center>
     <!-- BORDER -->
