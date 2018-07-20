@@ -73,7 +73,19 @@
     justify-content: space-between;
     align-items: flex-start;
   }
-  .build, .suggestions, .updates
+  
+div {
+  position:absolute; 
+  bottom: 0; 
+  width:100%; 
+  display:flex;
+  justify-content: 
+  space-between;
+  left:0;
+}
+div > * {
+  margin: 0;
+}
 </style>
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
@@ -206,12 +218,15 @@ $(document).ready(function(){
  </li>
         </ul>
         </span> </div> </div>  
-         <!-- COPYRIGHT --> 
-  <p style="font-size:12px; position: fixed; bottom: 0; width:100%; text-align: center" id="test"> Auron's website © </p>  
+<div>
+<p style="font-size:12px; order: 2;align-self: flex-end" id="test"> Auron's website © </p>  
 
 
-        <button style="position: fixed; bottom: 0; left: 0; right: auto; top: auto" onclick="playPause()">Play/Pause</button> 
+        <button style="order: 1;" onclick="playPause()">Play/Pause</button> 
         
-      <button style="position: fixed; bottom: 0; left: auto; right: 0; top: auto" action="calc.html"></button>
+      <form style="order: 3;" action="calc.html">
+    <input type="submit" value="Calculator" />
+</form>
+</div>
         <!-- END OF CODE -->
         </body> </html>
