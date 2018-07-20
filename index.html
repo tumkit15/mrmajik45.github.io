@@ -67,7 +67,14 @@
     word-wrap: break-word;
     position: absolute;
     right: 0px;
-}    
+} 
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .build, .suggestions, .updates
 </style>
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
@@ -150,10 +157,11 @@ $(document).ready(function(){
     <hr color:darkred> <!-- BORDER -->
          <!-- COLOR FOR TEXT DO NOT CHANGE -->
     <span style="color:darkred">
-    <P align=right style="margin-right: 140px;" class="update" id="hide"> Update List: </P> 
+    <div class="container">
+      <div class="updates"><P> Update List: </P> 
 
         <!-- UPDATE LIST -->
-<span> <ul style="margin-right: 10px;" class="update test" id="hide">
+<ul style="margin-right: 10px;" class="update test" id="hide">
     <li> 1.0 Website released! </li>
     <li> 1.1 Click copyright to hide. </li>
     <li> 1.2 Welcome sound added. </li>
@@ -164,16 +172,17 @@ $(document).ready(function(){
     <li> 1.6 Ads </li>
     <li> 1.7 Added some animation!</li>
     <li> 1.8 Minor corrections</li>
-    </ul> </span>
+      </ul> </div>
         
 <!-- ACTUAL TEXT! -->
-  <p align="center">
+  <div class="suggestions"> <p>
     If you find a bug or have a suggestion, click here: </p> 
     <p align=middle> <a href=captcha.html>Email Link</a>
-        </p> 
+    </p> </div>
               
  <!-- MAIN TEXT --> 
- <span align="left">   
+      <div class="build">
+ <span>   
  <p>
      My Desktop is a <b>Custom Dell Inspiron 3656</b>   SPECS:
 </p>
@@ -197,7 +206,7 @@ $(document).ready(function(){
         <li><a href="https://www.twitch.tv/mrmajik45">Twitch </a>  
  </li>
         </ul>
-      </span>   
+        </span> </div>   
          <!-- COPYRIGHT --> 
   <p style="font-size:12px; position: fixed; bottom: 0; width:100%; text-align: center" id="test"> Auron's website © </p>  
 
