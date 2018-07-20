@@ -73,18 +73,21 @@
     justify-content: space-between;
     align-items: flex-start;
   }
-  
-div {
-  position:absolute; 
-  bottom: 0; 
-  width:100%; 
-  display:flex;
-  justify-content: 
-  space-between;
-  left:0;
+  .form-wrap
+{
+display:flex;
+
+align-items:center;
+justify-content:center;
+width:100%;
+position:fixed;
+bottom:0;
 }
-div > * {
-  margin: 0;
+.form-wrap p,
+.form-wrap button,
+.form-wrap form
+{
+margin:10px;
 }
 </style>
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
@@ -218,15 +221,13 @@ $(document).ready(function(){
  </li>
         </ul>
         </span> </div> </div>  
-<div>
-<p style="font-size:12px; order: 2;align-self: flex-end" id="test"> Auron's website © </p>  
-
-
-        <button style="order: 1;" onclick="playPause()">Play/Pause</button> 
-        
-      <form style="order: 3;" action="calc.html">
+<div class="form-wrap">
+      <button  onclick="playPause()">Play/Pause</button> 
+      <p  id="test"> Auron's website © </p>  
+      <form  action="calc.html">
     <input type="submit" value="Calculator" />
 </form>
 </div>
+ Run
         <!-- END OF CODE -->
         </body> </html>
