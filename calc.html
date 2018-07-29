@@ -1,73 +1,362 @@
-<html>
-<style>
-html, body {
-    height: 100%;
-}
+<!-- 
+    Calculator style was based on this tutorial: https://freshman.tech/css-grid-calculator/
+    Event Listener: Event Propogation - Approach #3 
+      https://codepen.io/tophergates/pen/qPJQJM?editors=0010
+ -->
 
-html {
-    display: table;
-    margin: auto;
-}
-
-body {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-input[type="button"]
-{
-    font-size:20px;
-}
-
-
-td:hover {
-    background-color:darkgrey;
-}
-
-input[type="text"]
-{
-    font-size:14px;
-}
-
-</style>
-   <head>
-   <body style="background-color:black">
-      <form name="calculator">
-         <table class="sortable wikitable" border="6" cellpadding="9" cellspacing="0" style="font-size: 120%; border: gray solid 7px; border-collapse: collapse; width: 80%; text-align: left;">
-            <tr>
-               <td colspan="4">
-                  <input type="text" name="display" id="display" disabled>
-               </td>
-            </tr>
-            <tr>
-               <td><input type="button" name="one" value="1" onclick="calculator.display.value += '1'"></td>
-               <td><input type="button" name="two" value="2" onclick="calculator.display.value += '2'"></td>
-               <td><input type="button" name="three" value="3" onclick="calculator.display.value += '3'"></td>
-               <td><input type="button" class="operator" name="plus" value="+" onclick="calculator.display.value += '+'"></td>
-            </tr>
-            <tr>
-               <td><input type="button" name="four" value="4" onclick="calculator.display.value += '4'"></td>
-               <td><input type="button" name="five" value="5" onclick="calculator.display.value += '5'"></td>
-               <td><input type="button" name="six" value="6" onclick="calculator.display.value += '6'"></td>
-               <td><input type="button" class="operator" name="minus" value="-" onclick="calculator.display.value += '-'"></td>
-            </tr>
-            <tr>
-               <td><input type="button" name="seven" value="7" onclick="calculator.display.value += '7'"></td>
-               <td><input type="button" name="eight" value="8" onclick="calculator.display.value += '8'"></td>
-               <td><input type="button" name="nine" value="9" onclick="calculator.display.value += '9'"></td>
-               <td><input type="button" class="operator" name="times" value="x" onclick="calculator.display.value += '*'"></td>
-            </tr>
-            <tr>
-               <td><input type="button" id="clear" name="clear" value="c" onclick="calculator.display.value = ''"></td>
-               <td><input type="button" name="zero" value="0" onclick="calculator.display.value += '0'"></td>
-               <td><input type="button" name="doit" value="=" onclick="calculator.display.value = eval(calculator.display.value)"></td>
-               <td><input type="button" class="operator" name="div" value="/" onclick="calculator.display.value += '/'"></td>
-            </tr>
-         </table>
-      </form>
-   </body>
-   </head>
-         <!-- COPYRIGHT --> 
-  <p align="center" style="font-size:12px; position: fixed; bottom: 0; width:100%; text-align: center; color: silver;"> Auron's calculator © </p>  
-
-</html>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 
+   <!-- Favicons -->
+   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+ 
+   <!-- Website Title -->
+   <title>Auron's website</title>
+ 
+   <!-- 
+     All CSS should be in here.
+     Please don't add any inline styles.
+   -->
+   <style>
+     :root {
+       --background-color: black;
+       --main-font-color: darkred;
+       --back-font-color: #4e9ed4;
+       --back-font-color-hover: white;
+       --border-color: grey;
+       --button-color: white;
+       --button-hover-color: grey;
+       --operator-bg-color: #2e86c0;
+       --operator-bg-color-hover: #4e9ed4;
+       --clear-bg-color: #f0353c;
+       --clear-bg-color-hover: #f0595f;
+       --equal-bg-color: #2ec05f;
+       --equal-bg-color-hover: #4ed46b;
+       /* this sets the whole documents margin; set to 0 for none */
+       --wrapper-spacing: 2em; 
+     }
+ 
+     *, *::before, *::after {
+       margin: 0;
+       padding: 0;
+       box-sizing: inherit;
+     }
+ 
+     html {
+       font-size: 16px;
+       box-sizing: border-box;
+     }
+ 
+     html, body {
+       width: 100%;
+       height: 100%;
+     }
+ 
+     body {
+       background-color: var(--background-color);
+       /* 
+         Can't adjust surrounding space when using flexbox
+         else it messes up the footer's spacing.
+         Instead adjust --wrapper-spacing variable above.
+       */
+       margin: 0;
+       padding: 0;
+       display: flex;
+       flex-direction: column;
+       min-height: 100%;
+     }
+ 
+     .container {
+       display: flex;
+       justify-content: space-between;
+       align-items: flex-start;
+       color: var(--main-font-color);
+     }
+ 
+     header {
+       margin-top: var(--wrapper-spacing);
+       margin-left: var(--wrapper-spacing);
+       margin-right: var(--wrapper-spacing);
+     }
+ 
+     header > a {
+       font-size: 1.2rem;
+       text-decoration: none;
+       color: var(--back-font-color);
+     }
+ 
+     header > a:hover {
+       color: var(--back-font-color-hover);
+     }
+ 
+     main {
+       flex-grow: 1;
+       margin-left: var(--wrapper-spacing);
+       margin-right: var(--wrapper-spacing);
+     }
+ 
+     #calculator {
+       border: 1px solid #ccc;
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 400px;
+       border-radius: 2px;
+     }
+ 
+     #display {
+       width: 100%;
+       font-size: 3rem;
+       height: 60px;
+       border: none;
+       background-color: #252525;
+       color: #fff;
+       text-align: right;
+       padding-right: 22.5px;
+       padding-left: 10px;
+     }
+ 
+     .keys {
+       /* 
+         Flex Box is great, 
+         but lets not forget about grid!
+ 
+         https://gridbyexample.com/examples/
+         FREE: https://cssgrid.io/
+       */
+       display: grid;
+       grid-template-columns: repeat(4, 1fr);
+       grid-gap: 20px;
+       padding: 20px;
+     }
+ 
+     #calculator > .keys > button {
+       height: 50px;
+       background-color: var(--button-color);
+       border: none;
+       border-radius: 2px;
+       font-size: 2.5rem;
+       color: var(--button-hover-color);
+     }
+     
+     #calculator > .keys > button:hover {
+       background-color: var(--button-hover-color);
+       color: var(--button-color);
+     }
+ 
+     #calculator > .keys > button:focus {
+       outline: none;
+     }
+ 
+     #calculator > .keys > .operator {
+       background: var(--operator-bg-color);
+       color: #fff;
+     }
+ 
+     #calculator > .keys > .operator:hover {
+       background: var(--operator-bg-color-hover);
+     }
+ 
+     #calculator > .keys > .clear {
+       background-color: var(--clear-bg-color);
+       color: #fff;
+     }
+ 
+     #calculator > .keys > .clear:hover {
+       background-color: var(--clear-bg-color-hover);
+     }
+ 
+     #calculator > .keys > .plus {
+       /*
+       background-color: var(--equal-bg-color);
+       color: #fff;
+       */
+       height: 100%;
+       grid-area: 2 / 4 / 4 / 5;
+     }
+ 
+     #calculator > .keys > .equals {
+       background-color: var(--equal-bg-color);
+       color: #fff;
+       height: 100%;
+       grid-area: 4 / 4 / 6 / 5;
+     }
+ 
+     #calculator > .keys > .equals:hover {
+       background-color: var(--equal-bg-color-hover);
+     }
+ 
+     #calculator > .keys > .zero {
+       height: 100%;
+       grid-area: 5 / 1 / 6 / 3;
+     }
+ 
+     footer {
+       flex-shrink: 0;
+       margin: 0 0.5em 0.5em 0.5em; /* top right bottom left */
+     }
+ 
+     footer #tag {
+       /* 
+         margin:
+         first value assigned to both top & bottom; 
+         second value to both left & right.
+         It is a nice short way of writing it
+       */
+       margin: 0 auto;
+       padding: 0; /* assigns the same value to all sides */
+       cursor: pointer;
+       height: 21px;
+     }
+   </style>
+   <!-- No CSS beyond this line -->
+ </head>
+ <body>
+ 
+   <!-- Place all HTML below this line -->
+ 
+   <!-- Header Content -->
+   <header>
+     <a href="index.html">< Go Back</a>
+   </header>
+ 
+   <!-- Main Content -->
+   <main>
+     <div id="calculator">
+       <input 
+         id="display"
+         type="text" 
+         value="0"
+         disabled />
+   
+       <div class="keys">
+         <!-- 
+             Added the values so that we 
+             could use nicer looking 
+             times and division symbols 
+             while still being able to use
+             the eval function.
+         -->
+         <button class="clear">AC</button>
+ 
+         <button class="toDisplay operator" value="/">&divide;</button>
+         <button class="toDisplay operator" value="*">&times;</button>
+         <button class="toDisplay operator" value="-">&dash;</button>
+         <button class="toDisplay operator plus" value="+">&plus;</button>
+ 
+         <button class="toDisplay" value="7">7</button>
+         <button class="toDisplay" value="8">8</button>
+         <button class="toDisplay" value="9">9</button>
+ 
+         <button class="toDisplay" value="4">4</button>
+         <button class="toDisplay" value="5">5</button>
+         <button class="toDisplay" value="6">6</button>
+ 
+         <button class="toDisplay" value="1">1</button>
+         <button class="toDisplay" value="2">2</button>
+         <button class="toDisplay" value="3">3</button>
+     
+     
+         <button class="toDisplay zero" value="0">0</button>
+         <button class="toDisplay decimal" value=".">&period;</button>
+ 
+         <button class="equals">&equals;</button>
+       </div>
+     </div>
+   </main>
+ 
+   <!-- Footer and Tagline -->
+   <footer>
+     <div class="container">
+       <p id="tag">Auron's website Â &copy;</p>
+     </div>
+   </footer>
+ 
+ 
+ 
+   <!-- 
+     All HTML should be above this line.
+     All Javascript code should be placed below here.
+     Following these guidelines helps your website load speed. :)
+   -->
+   <script>
+     // when the page loads call these functions
+     window.onload = function() {
+       initCalc()
+     }
+ 
+     function myListener(event) {
+       /*
+         Make sure the event is not directly the parent's.
+         Then check for the correct HTML Element. 
+         (The element will always be returned in all caps.)
+       */
+       if (event.target !== event.currentTarget && 
+           event.target.nodeName === "BUTTON") {
+ 
+         // Filtering the event by HTML Class names
+         // Store once so we don't have to make multiple calls.
+         const classes = event.target.className;
+ 
+         // Check if the className string contains the specified class
+ 
+         // All buttons that will be displayed
+         if (classes.includes('toDisplay')) {
+           /* 
+             if the display still has a 0
+             it means that we have an initialized state.
+             So we want to overwrite the string.
+             Else we want to add to the string.
+           */
+           display.value === '0' ? // if true
+             display.value = event.target.value : // overwrite
+             display.value += event.target.value; // else join
+         } else
+ 
+         // Clear Screen Button
+         if (classes === 'clear') {
+           display.value = '0'; // Resets the display back to 0
+         } else
+ 
+         // Equals Button
+         if (classes === 'equals' && display.value != '') {
+           display.value = eval(display.value);
+         }
+       }
+ 
+       // just ends the remaining checks on the event early
+       event.stopPropagation();
+     }
+ 
+     function initCalc() {
+       /*
+         When creating event listeners as a rule of thumb
+         do not create more than 5 per a page. If you do
+         then you are potentially slowing the internet browser down.
+ 
+         When this is the case create 1 event listener on the parent.
+         Then listen for the children's events bubbling up to the parent.
+         Afterwards, handle the event. This saves resources on the browser.
+       */
+       const myCalc = document.getElementById('calculator');
+       myCalc.addEventListener('click', myListener, false);
+     }
+   </script>
+ 
+   <!-- Google Stuff -->
+   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   <script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+       google_ad_client: "ca-pub-1488256319567534",
+       enable_page_level_ads: true
+     });
+   </script>
+ </body>
+ </html>
+ 
