@@ -349,11 +349,7 @@
       const button = document.getElementById("music");
 
 
-      // creates an mousemove listener to the html element
-      document.body.addEventListener('mousemove', () => {
-        // starts audio when page loads
-        myAudio.play()
-      });
+
 
       // creates an onClick listener to the html element
      button.addEventListener('click', () => {
@@ -361,6 +357,16 @@
         myAudio.paused ? myAudio.play() : myAudio.pause();
       });
     }
+    function att() {
+      // creates an mousemove listener to the html element
+      document.body.addEventListener('mousemove', () => {
+        // starts audio when page loads
+        myAudio.play()
+      });
+    removeEventListener('click', att);
+}
+
+addEventListener('click', att);
 
     // Disappearing Tagline
     function tagline() {
