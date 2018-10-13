@@ -1,8 +1,7 @@
 # My first website
 This is my first website!
 
-Music: All the time -C418
-The music will play as soon as you click the mouse on our website.
+Music: Astral Coal -NITW
 
 > * Dev list:
 > > * Mrmajik45 *Me!*: A very messy coder. I made the minimum of this website.
