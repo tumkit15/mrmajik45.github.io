@@ -1,7 +1,7 @@
 # My first website
 This is my first website!
 
-Music: Astral Coal -NITW
+Music: Astral alley -NITW
 
 > * Dev list:
 > > * Mrmajik45 *Me!*: A very messy coder. I made the minimum of this website.
