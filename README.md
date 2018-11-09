@@ -8,4 +8,4 @@ Music: Astral alley -NITW
 > > * Neoplatonist: A friend of mine. A decent coder. Polished the website and helped me in certain parts that I couldn't figure out.
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
