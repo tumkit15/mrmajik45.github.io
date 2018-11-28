@@ -383,15 +383,22 @@ src: url(/Nitw.ttf);
 
     // Calculator
     function calculator() {
-      const calc = document.getElementsById('calc1');
-      const calc = document.getElementsById('calc2');
+      const calc1 = document.getElementsById('calc1');
+      const calc2 = document.getElementsById('calc2');
 
       // creates an onClick listener to the html element
-      calc.addEventListener('click', () => {
+      calc1.addEventListener('click', () => {
         // changes the window url to the page you want to go
         window.location.href = 'calc.html';
       });
     }
+    
+    // creates an onClick listener to the html element
+    calc2.addEventListener('click', () => {
+      // changes the window url to the page you want to go
+      window.location.href = 'calc.html';
+    });
+  }
   </script>
 
 </body>
