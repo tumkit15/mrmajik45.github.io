@@ -315,11 +315,11 @@ src: url(/Nitw.ttf);
   <!-- Footer and Tagline -->
   <footer>
     <div class="container">
-      <button id="calc" class="c-hand btn">Calculator</button>
+      <button class="calc" class="c-hand btn">Calculator</button>
 
       <p id="tag">Auron's website &copy;</p>
 
-      <button id="calc" class="c-hand btn">Calculator</button>
+      <button class="calc" class="c-hand btn">Calculator</button>
     </div>
   </footer>
 
@@ -383,7 +383,7 @@ src: url(/Nitw.ttf);
 
     // Calculator
     function calculator() {
-      const calc = document.getElementById('calc');
+      const calc = document.getElementsByClassName('calc');
 
       // creates an onClick listener to the html element
       calc.addEventListener('click', () => {
