@@ -335,12 +335,12 @@ src: url(/digital-7.ttf);
          } else
  
          // Clear Screen Button
-         if (classes === 'clear') {
+         if (classes.includes === 'clear') {
            display.value = '0'; // Resets the display back to 0
          } else
  
          // Equals Button
-         if (classes === 'equals' && display.value != '') {
+         if (classes.includes === 'equals' && display.value != '') {
            display.value = eval(display.value);
          }
        }
